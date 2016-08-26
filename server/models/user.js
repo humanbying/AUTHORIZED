@@ -8,10 +8,10 @@ const mongoose = require('mongoose');
 
 const userSchema = new mongoose.Schema({
   username: { type: String, required: true, unique: true },
-  password: { type: String, required: true },
-  name: { type: String, required: true},
-  gender: {type: Boolean, required: true, default: false},
-  age: {type: Number, required: true}
+  password: { type: String, required: true }
+  // biography: { type: String},
+  // links: {type: String, default: false},
+  // age: {type: Number, required: true}
 });
 
 userSchema.statics.register = function(userObj, cb) {

@@ -5,6 +5,7 @@ import ServerActions from './actions/ServerActions'
 
 const API = {
   register(user) {
+    console.log("user from API:", user);
     axios.post('/api/users/register', user)
       .then(res => {
         RouteActions.route('/login');
@@ -32,6 +33,10 @@ const API = {
       .then(res => res.data)
       .then(ServerActions.receiveProfile)
       .catch(console.error)
+  },
+
+  edit() {
+    RouteActions.route('/editProfile');
   }
 
 }

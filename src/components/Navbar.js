@@ -47,7 +47,7 @@ export default class Navbar extends Component {
               <span className="icon-bar"></span>
               <span className="icon-bar"></span>
             </button>
-            <Link className="navbar-brand" to='/'>React App</Link>
+            <Link className="navbar-brand" to='/'>REACTSPACE</Link>
           </div>
 
           <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -55,8 +55,10 @@ export default class Navbar extends Component {
 
             <ul className="nav navbar-nav navbar-right">
               <li><Link to='/'>Home</Link></li>
+
               <li><Link to='/register'>Register</Link></li>
               <li><Link to='/login'>Login</Link></li>
+
               <li><a onClick={this._logout} style={{cursor:'pointer'}}>Logout</a></li>
             </ul>
           </div>

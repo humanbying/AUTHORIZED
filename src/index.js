@@ -6,6 +6,8 @@ import Layout from './components/Layout'
 import Splash from './components/Splash'
 import RegisterPage from './components/RegisterPage'
 import LoginPage from './components/LoginPage'
+import EditProfile from './components/EditProfile'
+
 
 ////////////////////////////////////////////////
 import UserStore from './stores/UserStore'
@@ -19,8 +21,8 @@ render(
 
       <Route path='register' component={RegisterPage}/>
       <Route path='login' component={LoginPage}/>
-      
-    </Route>    
+      <Route path='editProfile' component={EditProfile}/>
+    </Route>
   </Router>,
   document.getElementById('root')
 );
