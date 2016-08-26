@@ -3,6 +3,8 @@ import { Link } from 'react-router'
 import UserStore from '../stores/UserStore'
 import UserWelcome from './UserWelcome'
 import UserActions from '../actions/UserActions'
+import UserAvatar from './UserAvatar';
+import StatusButtons from './StatusButtons';
 
 export default class Navbar extends Component {
   constructor() {
@@ -12,7 +14,6 @@ export default class Navbar extends Component {
       profile: UserStore.get()
     }
     this._onChange = this._onChange.bind(this);
-    this._logout = this._logout.bind(this);
   }
 
   componentDidMount() {
@@ -29,14 +30,11 @@ export default class Navbar extends Component {
     });
   }
 
-  _logout() {
-    UserActions.logout();
-  }
-
   render() {
     let { profile } = this.state;
 
     return (
+      <div>
       <nav className="navbar navbar-inverse navbar-static-top">
         <div className="container-fluid">
 
@@ -45,25 +43,21 @@ export default class Navbar extends Component {
               <span className="sr-only">Toggle navigation</span>
               <span className="icon-bar"></span>
               <span className="icon-bar"></span>
-              <span className="icon-bar"></span>
             </button>
-            <Link className="navbar-brand" to='/'>REACTSPACE</Link>
+            <Link className="navbar-brand" to='/'><b>REACTSPACE</b></Link>
           </div>
-
           <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <UserWelcome profile={profile}/>
 
-            <ul className="nav navbar-nav navbar-right">
-              <li><Link to='/'>Home</Link></li>
-
-              <li><Link to='/register'>Register</Link></li>
-              <li><Link to='/login'>Login</Link></li>
-
-              <li><a onClick={this._logout} style={{cursor:'pointer'}}>Logout</a></li>
+            <ul className="nav navbar-nav navbar-right container-fluid">
+            <UserWelcome profile={profile} />
+            <UserAvatar profile={profile} />
+            <StatusButtons profile={profile}/>
             </ul>
           </div>
         </div>
       </nav>
+      </div>
     )
   }
 }

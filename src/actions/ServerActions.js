@@ -1,5 +1,5 @@
-import AppDispatcher from '../AppDispatcher'
-import Constants from '../Constants'
+import AppDispatcher from '../AppDispatcher';
+import Constants from '../Constants';
 
 const ServerActions = {
   receiveProfile(profile) {
@@ -8,9 +8,17 @@ const ServerActions = {
       profile
     })
   },
+
   removeProfile(profile) {
     AppDispatcher.dispatch({
       type: Constants.REMOVE_PROFILE
+    })
+  },
+
+  receiveProfiles(profiles) {
+    AppDispatcher.dispatch({
+      type: Constants.RECEIVE_PROFILES,
+      profiles
     })
   }
 };

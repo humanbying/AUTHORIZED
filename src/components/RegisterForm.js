@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import UserActions from '../actions/UserActions'
+import UserActions from '../actions/UserActions';
 
 export default class RegisterForm extends Component {
   constructor() {
@@ -8,8 +8,12 @@ export default class RegisterForm extends Component {
     this.state = {
       username: '',
       password1: '',
-      password2: ''
+      password2: '',
+      name: '',
+      biography: '',
+      image: '',
     }
+
     this._onInputChange = this._onInputChange.bind(this);
     this._submit = this._submit.bind(this);
   }
@@ -18,6 +22,9 @@ export default class RegisterForm extends Component {
     let key = e.target.dataset.statekey;
     let value = e.target.value;
 
+    let newState = {};
+    newState[key] = value;
+
     this.setState({
       [key]: value
     });
@@ -25,9 +32,8 @@ export default class RegisterForm extends Component {
 
   _submit(e) {
     e.preventDefault();
-    let { username, password1, password2 } = this.state;
-
-    if(password1 !== password2) {
+    let { username, password1, password2, name, biography, image } = this.state;
+    if (password1 !== password2) {
       this.setState({
         password1: '',
         password2: ''
@@ -37,31 +43,94 @@ export default class RegisterForm extends Component {
 
     let user = {
       username,
-      password: password1
+      password: password1,
+      name,
+      biography,
+      image
     };
-    alert("Thanks for Registering!")
+
     UserActions.register(user);
   }
 
   render() {
-    let { username, password1, password2 } = this.state;
+    let { username, password1, password2, name, biography, image } = this.state;
 
     return (
       <div>
         <form onSubmit={this._submit}>
           <div className="form-group">
             <label>Username</label>
-            <input type="text" className="form-control" placeholder="Username" required value={username} data-statekey='username' onChange={this._onInputChange}/>
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Username"
+              required
+              value={username}
+              data-statekey='username'
+              onChange={this._onInputChange}
+            />
           </div>
           <div className="form-group">
             <label>Password</label>
-            <input type="password" className="form-control" placeholder="Password" required value={password1} data-statekey='password1' onChange={this._onInputChange}/>
+            <input
+              type="password"
+              className="form-control"
+              placeholder="Password"
+              required
+              value={password1}
+              data-statekey='password1'
+              onChange={this._onInputChange}
+            />
           </div>
           <div className="form-group">
             <label>Password (again)</label>
-            <input type="password" className="form-control" placeholder="Password" required value={password2} data-statekey='password2' onChange={this._onInputChange}/>
+            <input
+              type="password"
+              className="form-control"
+              placeholder="Password"
+              required
+              value={password2}
+              data-statekey='password2'
+              onChange={this._onInputChange}
+            />
           </div>
-          <button type="Submit" className="btn btn-default">Submit</button>
+          <div className="form-group">
+            <label>Name</label>
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Name"
+              required
+              value={name}
+              data-statekey='name'
+              onChange={this._onInputChange}
+            />
+          </div>
+          <div className="form-group">
+            <label>Biography</label>
+            <input
+              type="text"
+              className="form-control"
+              placeholder="biography"
+              required
+              value={biography}
+              data-statekey='biography'
+              onChange={this._onInputChange}
+            />
+          </div>
+          <div className="form-group">
+            <label>Image URL</label>
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Image Url"
+              required
+              value={image}
+              data-statekey='image'
+              onChange={this._onInputChange}
+            />
+          </div>
+          <button type="submit" className="btn btn-default">Submit</button>
         </form>
       </div>
     )

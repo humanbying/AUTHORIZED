@@ -6,8 +6,8 @@ const MONGO_URI = process.env.MONGODB_URI || 'mongodb://localhost/simple-auth';
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const express = require('express');
-const path = require('path');
 const morgan = require('morgan');
+const path = require('path');
 
 // DB CONNECT
 require('mongoose').connect(MONGO_URI, err => {
@@ -18,12 +18,13 @@ require('mongoose').connect(MONGO_URI, err => {
 // APP DECLARATION
 const app = express();
 
-if(process.env.NODE_ENV === 'production') {
+if (process.env.NODE_NEV === 'production') {
   app.use(express.static(path.join(__dirname, '../build')));
 } else {
-  // WEBPACK CONFIG
   const webpack = require('webpack');
   const webpackConfig = require('../webpack.dev');
+
+  // WEBPACK CONFIG
   const compiler = webpack(webpackConfig);
 
   app.use(require('webpack-dev-middleware')(compiler, {
@@ -33,6 +34,7 @@ if(process.env.NODE_ENV === 'production') {
 
   app.use(require('webpack-hot-middleware')(compiler));
 }
+
 
 // GENERAL MIDDLEWARE
 app.use(morgan('dev'));

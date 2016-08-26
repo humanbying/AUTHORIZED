@@ -6,22 +6,20 @@ import Layout from './components/Layout'
 import Splash from './components/Splash'
 import RegisterPage from './components/RegisterPage'
 import LoginPage from './components/LoginPage'
-import EditProfile from './components/EditProfile'
-
+import ProfilePage from './components/ProfilePage'
 
 ////////////////////////////////////////////////
 import UserStore from './stores/UserStore'
 ////////////////////////////////////////////////
 
-
+//maybe wrong
 render(
   <Router history={browserHistory}>
     <Route path='/' component={Layout}>
       <IndexRoute component={Splash} />
-
       <Route path='register' component={RegisterPage}/>
       <Route path='login' component={LoginPage}/>
-      <Route path='editProfile' component={EditProfile}/>
+      <Route path='profile' component={ProfilePage}/>
     </Route>
   </Router>,
   document.getElementById('root')

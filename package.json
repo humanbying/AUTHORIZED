@@ -1,17 +1,17 @@
 {
-  "name": "mern-todo",
+  "name": "simple-auth",
   "version": "1.0.0",
   "description": "",
   "main": "server/app.js",
   "scripts": {
     "start": "node server/app.js",
-    "postinstall": "webpack --config ./webpack.prod.js",
+    "postinstall": "webpack",
     "build": "NODE_ENV='production' webpack",
     "prod": "NODE_ENV='production' npm start",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "engines": {
-    "node": "6.4.0"
+    "node": "6.3.1"
   },
   "keywords": [],
   "author": "",
@@ -51,6 +51,7 @@
     "react": "^15.3.0",
     "react-bootstrap": "^0.30.2",
     "react-dom": "^15.3.0",
+    "react-loading-bar": "0.0.3",
     "react-router": "^2.6.1",
     "resolve-url-loader": "^1.6.0",
     "sass-loader": "^4.0.0",

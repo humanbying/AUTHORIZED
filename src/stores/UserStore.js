@@ -1,9 +1,10 @@
-import { EventEmitter } from 'events'
-import AppDispatcher from '../AppDispatcher'
-import UserActions from '../actions/UserActions'
-import Constants from '../Constants'
+import { EventEmitter } from 'events';
+import AppDispatcher from '../AppDispatcher';
+import UserActions from '../actions/UserActions';
+import Constants from '../Constants';
 
 let _profile = null;
+let _profiles = [];
 
 class UserStore extends EventEmitter {
   constructor() {
@@ -17,6 +18,10 @@ class UserStore extends EventEmitter {
           break;
         case Constants.REMOVE_PROFILE:
           _profile = null;
+          this.emit('CHANGE');
+          break;
+        case Constants.RECEIVE_PROFILES:
+          _profiles = action.profiles;
           this.emit('CHANGE');
           break;
       }
@@ -37,6 +42,10 @@ class UserStore extends EventEmitter {
 
   get() {
     return _profile;
+  }
+
+  getAll() {
+    return _profiles;
   }
 }
 
